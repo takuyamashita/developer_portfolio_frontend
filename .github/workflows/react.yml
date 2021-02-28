@@ -69,7 +69,6 @@ jobs:
           echo "$SSH_KEY" > secret_key
           chmod 600 secret_key
 
-
       - name: Deploy files builded
         run: |
           scp -o StrictHostKeyChecking=no -P $SSH_PORT -i secret_key -r build/* $SSH_USER@$SSH_HOST:$BUILD_ROOT_PATH/
