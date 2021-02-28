@@ -72,7 +72,7 @@ jobs:
 
       - name: Deploy files builded
         run: |
-          scp -P $SSH_PORT -i secret_key build/* $SSH_USER@$SSH_HOST:$BUILD_ROOT_PATH/
+          scp -o StrictHostKeyChecking=no -P $SSH_PORT -i secret_key build/* $SSH_USER@$SSH_HOST:$BUILD_ROOT_PATH/
           
 
 
