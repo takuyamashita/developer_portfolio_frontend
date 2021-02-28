@@ -34,20 +34,20 @@ const ProductDetailHeader = (props) => {
                     </Box>
                 </Card>
             </Box>
-            <Box flexGrow={2}  m={2}>
+            <Box flexGrow={2}  m={2} position='relative'>
                 <Box flexGrow={2} justifyContent='center'>
                     <Typography variant='h5'>
                         {product.title}
                     </Typography>
                 </Box>
-                <Box display='flex' mt={1} ml={1} alignItems='center'>
+                {/* <Box display='flex' mt={1} ml={1} alignItems='center'>
                     <Typography variant='subtitle1'>
                         Last Update :
                     </Typography>
                     <Typography variant='subtitle1'>
                         21/23/1
                     </Typography>
-                </Box>
+                </Box> */}
                 {/* <Box display='flex' mt={1} ml={1} flexWrap='wrap'>
                     <Box width='100%'>
                         <Typography variant='h6'>
@@ -60,7 +60,7 @@ const ProductDetailHeader = (props) => {
                         }
                     </Box>
                 </Box> */}
-                <Box display='flex'>
+                <Box display='flex' position='absolute' bottom='0'>
                     {product.html_download_tag_android !== null &&
                         <Box className={classes.downloadTagWrapper}
                             dangerouslySetInnerHTML={{__html:product.html_download_tag_android}}
