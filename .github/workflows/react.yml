@@ -40,6 +40,7 @@ jobs:
 
     env:
       API_HOST: ${{ secrets.API_HOST }}
+      CI: false
 
     steps:
       - name: Checkout
