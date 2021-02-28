@@ -73,7 +73,7 @@ jobs:
       - name: Deploy files builded
         run: |
           scp -o StrictHostKeyChecking=no -P $SSH_PORT -i secret_key -r build/* $SSH_USER@$SSH_HOST:$BUILD_ROOT_PATH/
-          scp -o StrictHostKeyChecking=no -o $SSH_PORT -i secret_key $SSH_USER@$SSH_HOST copy /Y $BUILD_ROOT_PATH/index.html $BUILD_ROOT_PATH/../resources/views/welcome.blade.php
+          ssh -o StrictHostKeyChecking=no -p $SSH_PORT -i secret_key $SSH_USER@$SSH_HOST copy /Y $BUILD_ROOT_PATH/index.html $BUILD_ROOT_PATH/../resources/views/welcome.blade.php
           
           
 
