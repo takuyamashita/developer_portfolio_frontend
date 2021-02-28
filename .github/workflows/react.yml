@@ -71,7 +71,7 @@ jobs:
 
       - name: Deploy files builded
         run: |
-          scp -p $SSH_PORT -i secret_key build/* $SSH_HOST@$SSH_USER:$BUILD_ROOT_PATH/
+          scp -p $SSH_PORT -i secret_key build/* $SSH_USER@$SSH_HOST:$BUILD_ROOT_PATH/
           
 
 
