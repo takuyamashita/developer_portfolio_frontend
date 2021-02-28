@@ -4,10 +4,24 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import {ConnectedRouter} from 'connected-react-router';
+import { ThemeProvider } from '@material-ui/styles';
+import theme from "./Theme";
+import * as History from 'history';
+import createStore from './reducks/store/store';
+import {Provider} from 'react-redux';
+
+const history = History.createBrowserHistory();
+export const store = createStore(history);
+
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Provider store={store}>
+    <ConnectedRouter history={history}>
+      <ThemeProvider theme={theme}>
+        <App />
+      </ThemeProvider>
+    </ConnectedRouter>
+  </Provider>,
   document.getElementById('root')
 );
 
