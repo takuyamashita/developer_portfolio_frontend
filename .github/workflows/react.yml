@@ -10,12 +10,36 @@ on:
     branches: [master]
 
 jobs:
-  tests:
+  # tests:
+  #   runs-on: ubuntu-18.04
+  #   timeout-minutes: 10
+
+  #   env:
+  #     CI: false
+
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v2
+
+  #     - name: Install Node
+  #       uses: actions/setup-node@v1
+  #       with:
+  #         node-version: 14.15.1
+
+  #     - name: Install Dependencies
+  #       run: |
+  #         yarn install
+
+  #     - name: Test
+  #       run: |
+  #         yarn test
+  deploy:
     runs-on: ubuntu-18.04
     timeout-minutes: 10
+    if: github.ref == 'refs/heads/master'
 
     env:
-      CI: false
+      API_HOST: ${{ secrets.API_HOST }}
 
     steps:
       - name: Checkout
@@ -34,7 +58,4 @@ jobs:
         run: |
           yarn build
 
-      - name: Test
-        run: |
-          yarn test
 
