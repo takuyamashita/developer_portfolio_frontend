@@ -39,8 +39,13 @@ jobs:
     if: github.ref == 'refs/heads/master'
 
     env:
-      API_HOST: ${{ secrets.API_HOST }}
+      SSH_HOST: ${{ secrets.SSH_HOST}}
+      SSH_USER: ${{ secrets.SSH_USER }}
+      SSH_KEY: ${{ secrets.SSH_KEY }}
+      SSH_PORT: ${{ secrets.SSH_PORT }}
+      BUILD_ROOT_PATH: ${{ secrets.BUILD_ROOT_PATH }}
       CI: false
+      API_HOST: ${{ secrets.API_HOST }}
 
     steps:
       - name: Checkout
@@ -58,5 +63,15 @@ jobs:
       - name: Build
         run: |
           yarn build
+      
+      - name: Copy ssh key
+        run: |
+          echo "$SSH_KEY" > secret_key
+          chmod 600 secret_key
+
+      - name: Deploy files builded
+        run: |
+          scp -p $SSH_PORT -i secret_key build/* $SSH_HOST@$SSH_USER:$BUILD_ROOT_PATH/
+          
 
 
