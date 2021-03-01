@@ -41,12 +41,20 @@ const ProductDetail = (props) => {
 
             const response = await Api.get(`/product/${routeName}`);
 
+            if(`${response.status}`[0] !== '2'){
+                dispatch(push('/'));
+                return;
+            }
+
             setProduct(response.data.data);
         }else{
             const filteredProducts = products.filter(product => product.route_name === routeName);
             
             if(filteredProducts.length > 0){
                 setProduct(filteredProducts[0]);
+            }else{
+                dispatch(push('/'));
+                return;
             }
         }
         setIsLoading(false);
@@ -55,6 +63,10 @@ const ProductDetail = (props) => {
     useEffect(() => {
         if(products === null) dispatch(getProductsOperation());
     },[]);
+
+    useEffect(() => {
+        if(product !== null) document.title = product.title;
+    },[product]);
 
     const getContent = () => (
         <Box>
