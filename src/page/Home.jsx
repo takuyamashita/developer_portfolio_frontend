@@ -16,6 +16,7 @@ const Home = () => {
 
     useEffect(() => {
         if(products == null) dispatch(getProductsOperation());
+        document.title = 'TY Swing Studio'
     },[]);
 
     return (
