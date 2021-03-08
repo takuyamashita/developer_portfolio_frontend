@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
             background:'#fafafa'
         }
     },
-    downloadTagWrapper:{
+    downloadTagWrapperForAndroid:{
         '& img':{
             //width:'180px',
             [theme.breakpoints.up('xs')]:{
@@ -31,7 +31,20 @@ const useStyles = makeStyles((theme) => ({
                 width:'180px',
             }
         },
-    }
+    },
+    downloadTagWrapperForIos:{
+        '& img':{
+            //width:'180px',
+            [theme.breakpoints.up('xs')]:{
+                width:'100px',
+                paddingTop:'6px',
+            },
+            [theme.breakpoints.up('sm')]:{
+                paddingTop:'10px',
+                width:'150px',
+            }
+        },
+    },
 }));
 
 const ProductListItem = (props) => {
@@ -69,17 +82,17 @@ const ProductListItem = (props) => {
                         </Card>
                     </Box>
                 </Box>
-                <Box display='flex' justifyContent='space-around'>
+                <Box display='flex' justifyContent='center'>
                     {product.html_download_tag_android != null &&
                         <Box
-                            className={classes.downloadTagWrapper} 
+                            className={classes.downloadTagWrapperForAndroid} 
                             dangerouslySetInnerHTML={{__html:product.html_download_tag_android}}
                         >
                         </Box>
                     }
                     {product.html_download_tag_ios != null &&
                         <Box
-                            className={classes.downloadTagWrapper} 
+                            className={classes.downloadTagWrapperForIos} 
                             dangerouslySetInnerHTML={{__html:product.html_download_tag_ios}}
                         >
                         </Box>

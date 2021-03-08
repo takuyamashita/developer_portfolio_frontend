@@ -84,7 +84,7 @@ const LoginForm = () => {
                 </FormControl>
                 <FormControl className={classes.margin}>
                     <InputLabel shrink htmlFor="admin-password">
-                        Name
+                        Password
                     </InputLabel>
                     <CustomInput id="admin-password" type='password' value={password} onChange={(event) => {setPassword(event.currentTarget.value);}} />
                 </FormControl>

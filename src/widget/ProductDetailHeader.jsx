@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/styles';
 import { react } from 'react';
 
 const useStyles = makeStyles((theme) => ({
-    downloadTagWrapper:{
+    downloadTagWrapperForAndroid:{
         '& img':{
             //width:'180px',
             [theme.breakpoints.up('xs')]:{
@@ -12,6 +12,19 @@ const useStyles = makeStyles((theme) => ({
             },
             [theme.breakpoints.up('sm')]:{
                 width:'180px',
+            }
+        },
+    },
+    downloadTagWrapperForIos:{
+        '& img':{
+            //width:'180px',
+            [theme.breakpoints.up('xs')]:{
+                width:'100px',
+                paddingTop:'6px',
+            },
+            [theme.breakpoints.up('sm')]:{
+                paddingTop:'10px',
+                width:'150px',
             }
         },
     },
@@ -62,8 +75,15 @@ const ProductDetailHeader = (props) => {
                 </Box> */}
                 <Box display='flex' position='absolute' bottom='0'>
                     {product.html_download_tag_android !== null &&
-                        <Box className={classes.downloadTagWrapper}
+                        <Box className={classes.downloadTagWrapperForAndroid}
                             dangerouslySetInnerHTML={{__html:product.html_download_tag_android}}
+                        >
+                        
+                        </Box>
+                    }
+                    {product.html_download_tag_ios !== null &&
+                        <Box className={classes.downloadTagWrapperForIos}
+                            dangerouslySetInnerHTML={{__html:product.html_download_tag_ios}}
                         >
                         
                         </Box>

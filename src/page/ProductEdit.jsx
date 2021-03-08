@@ -61,9 +61,16 @@ const useStyles = makeStyles((theme) => ({
         height:'300px',
         width:'300px',
     },
-    downloadButtonPreview:{
+    downloadButtonPreviewAndroid:{
         '& img':{
             width:'200px',
+        },
+    },
+    downloadButtonPreviewIos:{
+        paddingTop:'15px',
+        textAlign:'center',
+        '& img':{
+            width:'170px',
         },
     },
 }));
@@ -198,7 +205,7 @@ const ProductEdit = (props) => {
                         </FormControl>
                         <Box display={{sm:'flex'}} flexWrap={{sm:'wrap'}} alignItems='center'>
                             <Box mr={2}>
-                                <Card id='product-edit-download-tag-android-preview' className={classes.downloadButtonPreview}
+                                <Card id='product-edit-download-tag-android-preview' className={classes.downloadButtonPreviewAndroid}
                                     style={{width:'200px'}}
                                     dangerouslySetInnerHTML={{__html:htmlDownloadTagAndoid}}
                                 >
@@ -219,7 +226,7 @@ const ProductEdit = (props) => {
                         </Box>
                         <Box display={{sm:'flex'}} flexWrap={{sm:'wrap'}} alignItems='center'>
                             <Box mr={2}>
-                                <Card id='product-edit-download-tag-ios-preview' className={classes.downloadButtonPreview}
+                                <Card id='product-edit-download-tag-ios-preview' className={classes.downloadButtonPreviewIos}
                                     style={{width:'200px'}}
                                     dangerouslySetInnerHTML={{__html:htmlDownloadTagIos}}
                                 >
